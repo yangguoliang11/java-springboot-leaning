@@ -12,7 +12,9 @@ import java.util.List;
 @RestController
 @RequestMapping("test")
 public class TestController {
-
+    public void print(Object object){
+        System.out.println(object);
+    }
     @RequestMapping("hello")
     public String sayHello(){
 
@@ -72,7 +74,9 @@ public class TestController {
 
         System.out.println(Math.ceil(100*Math.random()));
 
+        print("aa");
 
+        
 
         return bb;
 
