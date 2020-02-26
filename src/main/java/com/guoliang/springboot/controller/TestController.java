@@ -2,18 +2,57 @@ package com.guoliang.springboot.controller;
 
 
 import com.guoliang.springboot.model.Book;
+import com.guoliang.springboot.model.Person;
+import com.guoliang.springboot.model.TestStatic;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.Collections.shuffle;
 
 
 @RestController
 @RequestMapping("test")
 public class TestController {
+
     public void print(Object object){
         System.out.println(object);
+    }
+
+    @RequestMapping("person")
+    public void person() {
+        Person p = new Person();
+        p.head = "guoliang";
+        p.age  = "12";
+        p.hand = "guoliang hand";
+        System.out.println("head"+p.hand+p.age+p.hand);
+
+    }
+
+    @RequestMapping("hello2")
+    public String sayHello2() {
+        return String.valueOf(1/0);
+
+    }
+    @RequestMapping("hello3")
+    public Object sayHello3() {
+        TestStatic a = new TestStatic();
+        TestStatic b = new TestStatic();
+        a.setTest("testa");
+        b.setTest("testa");
+        char tc = 'b';
+
+        int ti = 1;
+
+        System.out.println(tc+ti);
+
+
+        System.out.println(TestStatic.i);
+        return a.getTest().equals(b.getTest());
+
     }
     @RequestMapping("hello")
     public String sayHello(){
@@ -76,7 +115,15 @@ public class TestController {
 
         print("aa");
 
-        
+        List<String> list = new ArrayList<String>();
+        list.add("abcd");
+        list.add("abcd23");
+        list.add("abcd33");
+        list.add("abcd44");
+        list.add("abcd55");
+
+        shuffle(list);
+
 
         return bb;
 
